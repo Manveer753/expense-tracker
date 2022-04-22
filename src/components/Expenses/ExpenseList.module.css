@@ -1,0 +1,17 @@
+div {
+  width: 95%;
+  margin: 0.5rem auto 0.5rem auto;
+  font-weight: bold;
+}
+
+.no-expenses-fallback {
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0.911);
+  color: white;
+  font-weight: bold;
+  padding: 1em;
+  font-size: 1.2rem;
+  width: 80%;
+  margin: 0 auto 0 auto;
+  border-radius: 7px;
+}

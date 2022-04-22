@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import NewExpense from "./components/NewExpense/NewExpense";
+import Expenses from "./components/Expenses/Expenses";
+
+// Creating an empty array of expenses
+const EMPTY_EXPENSES = [];
 
 function App() {
+  // Creating a state for the expenses, which is first initialized to the EMPTY_EXPENSES array
+  const [expenses, setExpenses] = useState(EMPTY_EXPENSES);
+
+  // const expensesStored = localStorage.getItem("expensesStored");
+  // if (expensesStored) {
+  //   setExpenses(expensesStored);
+  // }
+  // Adding an expense
+  const addExpense = (expense) => {
+    // Using the previous state
+    setExpenses((prevExpenses) => {
+      // Using the spread operator to add all expenses from the previous state
+      return [expense, ...prevExpenses];
+    });
+    // localStorage.clear();
+    // localStorage.setItem("expensesStored", JSON.stringify(expenses));
+  };
+
+  // Removing an expense
+  const removeExpense = (expenseKey) => {
+    // Converting expenseKey (passed as a prop all the way from NewExpenseForm.js) to a number
+    const expenseKeyNum = Number(expenseKey);
+    // Using filter to return a new array that does not contain the expense we want to remove
+    const newExpenses = expenses.filter((expense) => {
+      // Checking which expense has the same key as expenseKey (got from the value of the delete button click)
+      return expense.key !== expenseKeyNum;
+    });
+
+    // setting new state for expense, re-renders
+    setExpenses(newExpenses);
+    // localStorage.clear();
+    // localStorage.setItem("expensesStored", JSON.stringify(expenses));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NewExpense addExpenseHandler={addExpense} />
+      <Expenses allExpenses={expenses} removeExpenseHandler={removeExpense} />
+    </>
   );
 }
 
