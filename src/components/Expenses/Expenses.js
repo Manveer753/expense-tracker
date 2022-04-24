@@ -11,7 +11,10 @@ const Expenses = (props) => {
   };
 
   const filteredExpenses = props.allExpenses.filter((expense) => {
-    return expense.date.getFullYear().toString() === filteredYear;
+    // Converting the expense.date to date, which was converted to a string when storing in local storage
+    const expenseDate = new Date(expense.date);
+    // Returning all expenses that match the filteredYear
+    return expenseDate.getFullYear().toString() === filteredYear;
   });
 
   const removeExpense = (expenseKey) => {

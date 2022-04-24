@@ -6,10 +6,12 @@ const ExpenseItem = (props) => {
     props.removeExpenseHandler(event.target.value);
   };
 
+  const expenseDate = new Date(props.expenseItem.date);
+
   return (
     <div className={styles["outer-list-item"]}>
       <div className={styles["expense-item-info"]}>
-        <ExpenseDate expenseDate={props.expenseItem.date} />
+        <ExpenseDate expenseDate={expenseDate} />
         <div className={styles["expense-title"]}>{props.expenseItem.title}</div>
       </div>
 

@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
 
 // Creating an empty array of expenses
 const EMPTY_EXPENSES = [];
+const LOCAL_STORAGE_KEY = "expense-tracker.expenses";
 
 function App() {
-  // Creating a state for the expenses, which is first initialized to the EMPTY_EXPENSES array
-  const [expenses, setExpenses] = useState(EMPTY_EXPENSES);
+  // Creating a state with the expenses stored in localStorage
+  const [expenses, setExpenses] = useState(() => {
+    const expensesJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (expensesJSON != null) {
+      return JSON.parse(expensesJSON);
+    } else {
+      // If no expenses are found in localStorage, it creates the state with the EMPTY_EXPENSES array
+      return EMPTY_EXPENSES;
+    }
+  });
+
+  // useEffect hook to update the localStoarge every time the expenses state changes
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(expenses));
+  }, [expenses]);
 
   // const expensesStored = localStorage.getItem("expensesStored");
   // if (expensesStored) {
