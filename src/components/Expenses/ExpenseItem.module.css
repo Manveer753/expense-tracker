@@ -48,6 +48,13 @@
   border-radius: 5px;
   border: none;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.delete-item__btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 2px 2px black;
+  transition-duration: 300ms;
 }
 
 .expense-title {

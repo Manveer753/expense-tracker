@@ -52,6 +52,11 @@ li > input {
   border-radius: 5px;
   border: none;
   margin: 2rem 0 0 2rem;
+  cursor: pointer;
+}
+
+.buttons > button:hover {
+  background-color: rgb(120, 88, 143);
 }
 
 @media only screen and (max-width: 768px) {
