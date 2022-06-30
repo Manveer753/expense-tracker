@@ -8,4 +8,4 @@
 • Expenses are stored in localStorage, so they persist even after the 
 user exits the application. 
 
-The project is hosted [here] (https://peaceful-pie-210a5d.netlify.app/)
+The project is hosted [here](https://peaceful-pie-210a5d.netlify.app/)
