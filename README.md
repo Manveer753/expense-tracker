@@ -1,3 +1,13 @@
+# Expense Tracker: 
+• Built with React and hosted on Netlify.
+
+• Users can add and remove expenses.
+
+• Users can also filter expenses by year. 
+
+• Expenses are stored in localStorage, so they persist even after the 
+user exits the application. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
